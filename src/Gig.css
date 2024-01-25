@@ -11,6 +11,28 @@
     color: rgb(0, 0, 0);
 }
 
+.heart-button {
+    background-color: transparent;
+    border: none;
+    font-size: 40px;
+    cursor: pointer;
+    outline: none;
+    transition: color 0.1s;
+}
+
+.heart-button:hover {
+    color: rgb(230, 45, 45);
+}
+
+.heart-button.liked {
+color: rgb(230, 45, 45);
+}
+
+.heart-button.liked:hover {
+    color: black;
+}
+
+
 /* .gig-listing h3 {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     letter-spacing: 1.5px;

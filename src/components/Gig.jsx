@@ -3,6 +3,8 @@ import "../Gig.css"
 import { useState } from "react";
 
 
+
+
 const FavouriteButton = ({ gigId, favourite, setFavourite, addToFavouriteGigs, removeFromFavouriteGigs }) => {
 
     const handleCLick = () => {
@@ -22,15 +24,15 @@ const FavouriteButton = ({ gigId, favourite, setFavourite, addToFavouriteGigs, r
         {favourite ? (
             <div>
                 <p className="favourited">In favourites</p>
-                <button data-testid="unfavourite" onClick={handleCLick}>
-                    unfavourite
+                <button className="heart-button liked" data-testid="unfavourite" onClick={handleCLick}>
+                ❤
                 </button>
             </div>
         ) : (
             <div>
                 <p className="favourited">Not in favourites</p>
-                <button data-testid="favourite" onClick={handleCLick}>
-                    favourite
+                <button className="heart-button" data-testid="favourite" onClick={handleCLick}>
+                ❤
                 </button>
             </div>
         )}

@@ -1,6 +1,7 @@
 
-import GigList from "./components/GigList";
+import '@fortawesome/fontawesome-free/css/all.css';
 
+import GigList from "./components/GigList";
 
 import "./App.css";
 

@@ -1,12 +1,19 @@
 import React from "react";
 import Gig from "./Gig";
-import gigsData from "./gigsData";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 
 const GigList = () => {
 
+    const [gigs, setGigs] = useState([])
     const [favouriteGigs, setFavouriteGigs] = useState([])
+
+    useEffect(() => {
+        const URL = "https://makers-gig-backend.onrender.com/events"
+        fetch(URL)
+            .then(response => response.json())
+            .then(data => setGigs(data))
+    });
 
     const addToFavouriteGigs = (gigId) => {
         console.log(gigId)
@@ -21,12 +28,12 @@ const GigList = () => {
         );
     };
 
-    const filteredGigsFavourite = gigsData.filter((gig) => 
-        favouriteGigs.includes(gig.id)
+    const filteredGigsFavourite = gigs.filter((gig) => 
+        favouriteGigs.includes(gig.event_id)
     );
 
-    const filteredGigsNotFavourite = gigsData.filter((gig) => 
-        !favouriteGigs.includes(gig.id)
+    const filteredGigsNotFavourite = gigs.filter((gig) => 
+        !favouriteGigs.includes(gig.event_id)
     );
 
     
@@ -36,11 +43,11 @@ const GigList = () => {
             <h1>Favourite Gigs</h1>
             {filteredGigsFavourite.map((gig) => (
                 <Gig
-                    key={gig.id}
-                    gigId={gig.id}
-                    name={gig.name}
-                    eventDescription={gig.eventDescription}
-                    timeDate={gig.timeDate}
+                    key={gig.event_id}
+                    gigId={gig.event_id}
+                    name={gig.band_name}
+                    eventDescription={gig.description}
+                    timeDate={gig.time}
                     location={gig.location}
                     addToFavouriteGigs={addToFavouriteGigs}
                     removeFromFavouriteGigs={removeFromFavouriteGigs}
@@ -51,11 +58,11 @@ const GigList = () => {
             <h1> Not Favourite Gigs </h1>
             {filteredGigsNotFavourite.map((gig) => (
                 <Gig
-                    key={gig.id}
-                    gigId={gig.id}
-                    name={gig.name}
-                    eventDescription={gig.eventDescription}
-                    timeDate={gig.timeDate}
+                    key={gig.event_id}
+                    gigId={gig.event_id}
+                    name={gig.band_name}
+                    eventDescription={gig.description}
+                    timeDate={gig.time}
                     location={gig.location}
                     addToFavouriteGigs={addToFavouriteGigs}
                     removeFromFavouriteGigs={removeFromFavouriteGigs}
