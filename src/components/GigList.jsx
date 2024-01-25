@@ -42,6 +42,8 @@ const GigList = () => {
         <div>
             <h1>Favourite Gigs</h1>
             {filteredGigsFavourite.map((gig) => (
+
+            <div className="gig">
                 <Gig
                     key={gig.event_id}
                     gigId={gig.event_id}
@@ -53,10 +55,12 @@ const GigList = () => {
                     removeFromFavouriteGigs={removeFromFavouriteGigs}
                     favouriteGigs={favouriteGigs}
                     />
+            </div>
             ))}
 
             <h1> Not Favourite Gigs </h1>
             {filteredGigsNotFavourite.map((gig) => (
+                <div className="gig">
                 <Gig
                     key={gig.event_id}
                     gigId={gig.event_id}
@@ -68,7 +72,9 @@ const GigList = () => {
                     removeFromFavouriteGigs={removeFromFavouriteGigs}
                     favouriteGigs={favouriteGigs}
                     />
+                </div>
             ))}
+
         </div>
     )
 
